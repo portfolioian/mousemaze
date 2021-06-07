@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Mouse Maze | Ian & Jiwoo</title>
+		<meta name="description" content="Mouse Maze portfolio with p5.js" />
+		<meta name="keywords" content="javascript, maze, game, portfolio, p5.js, ian, jiwoo" />
+		<meta name="author" content="ian&jiwoo" />
+		<link rel="shortcut icon" href="favicon.ico">
+		
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP&family=Open+Sans&display=swap" rel="stylesheet">
+    
+		<link rel="stylesheet" type="text/css" href="/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="/select-css.css" />
+		<link rel="stylesheet" type="text/css" href="/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/component.css" />
+    
+    
+		<script src="/modernizr-custom.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script  type="text/javascript">
+   //   alert('sdfds');
+      
+   
+    
+    $(document).ready(function() {
+      //alert('ss');
+     //  alert(  $("#select-effect option:selected").val() );
+      
+       $("#q_contact").hide();
+       $("#q_dev").hide();
+       $("#q_maze").hide();
+       $("#q_intro").show();
+             
+      
+      $("#select-effect").change(function() {
+
+         $("#select-effect option:selected").each(function() {
+
+      //  alert(  $("#select-effect option:selected").val() );
+             if( $("#select-effect option:selected").val()=='effect-1'){
+               // alert('dev');
+               
+               $(".custom-select select").css('color','#ffffff');
+                 $("#dev_move").trigger('click');
+                 $("#q_contact").hide();
+                 $("#q_dev").show();
+                 $("#q_maze").hide();
+                 $("#q_intro").hide();
+             }
+           
+             if( $("#select-effect option:selected").val()=='effect-4'){
+               // alert('dev');
+               $(".custom-select select").css('color','#000000');
+               $("#contact_move").trigger('click');
+                $("#q_contact").show();
+                $("#q_dev").hide();
+                $("#q_maze").hide();
+                 $("#q_intro").hide();
+             }
+           //maze
+           if( $("#select-effect option:selected").val()=='effect-2'){
+               // alert('dev');
+                 $(".custom-select select").css('color','#000000');
+              //   $(".codrops-header__title").css('color', '#000000');
+                $("#maze_move").trigger('click');
+                $("#q_contact").hide();
+                $("#q_dev").hide();
+                $("#q_maze").show();
+                $("#q_intro").hide();
+               $("#q_maze_main").show();
+             }
+           //intro
+           if( $("#select-effect option:selected").val()=='effect-3'){
+               // alert('dev');
+               //  $("#dev_move").trigger('click');
+               $(".custom-select select").css('color','#ffffff');
+             
+                 $("#q_contact").hide();
+                 $("#q_dev").hide();
+                 $("#q_maze").hide();
+                 $("#q_intro").show();
+             }
+           
+           
+           
+
+       });
+
+  });
+      
+  //////////////////
+    $("#intro_move").click(function (){
+         $("#intro_move").trigger('click');
+        $("#q_contact").hide();
+        $("#q_dev").hide();
+        
+    });
+
+
+
+      
+    });
+    </script>
+	</head>
+	<body>
+		<!-- SVG symbol used for navigation arrows -->
+		<svg class="hidden">
+			<defs>
+				<symbol id="icon-arrow" viewBox="0 0 39 51.43">
+					<title>Arrow Left</title>
+					<polygon points="7 25.71 36 45.71 36 26.08 36 5.71 7 25.71" stroke-miterlimit="10" stroke-width="6"/><line x1="3" y1="5.71" x2="3" y2="45.71" fill="none" stroke-miterlimit="10" stroke-width="6"/>
+				</symbol>
+			</defs>
+		</svg>
+		<main class="container">
+			<div class="pages">
+				<div class="page page--current"><!-- intro page -->
+					<header class="codrops-header">
+						<!-- <div class="codrops-links">
+							<a class="codrops-icon codrops-icon--prev" href="http://tympanus.net/Development/IsometricGrids/" title="Previous Demo"><span>Previous Demo</span></a>
+							<a class="codrops-icon codrops-icon--drop" href="http://tympanus.net/codrops/?p=27125" title="Back to the article"><span>Back to the Codrops article</span></a>
+						</div> -->
+						<h1 class="codrops-header__title">Mouse Maze</h1>
+						<div class="codrops-header__subbox">
+							<span></span>
+							<div class="custom-select">
+								<select name="select" id="select-effect" >
+									<option value="effect-3" data-layers="3" data-colors="#ffff00,#fff,#3E3A35" selected>Intro</option> 
+									<option value="effect-1" data-layers="1" data-colors="#202023" id="dev" >Developers</option>
+									<option value="effect-2" data-layers="2" data-colors="#202023,#3D4A41">Mouse Maze</option>
+									<option value="effect-4" data-layers="3" data-colors="#202023,#555,#d1d1d1">Contact</option>
+								</select>
+							</div>
+						</div>
+					</header>
+          
+          <div id="q_intro">
+            
+        <!--  <a class="pater" href="https://paper-frosted-ornament.glitch.me"> -->
+					<!--	<img class="pater__img" src="https://cdn.glitch.com/c9035c46-9465-43af-ace3-c36347f2aa78%2Fthumbnails%2FHackReactorLogo.svg?1622870235467" alt="Hack Reactor" />
+						--><div class="pater__text" id="intro_text">
+            <a style="padding-left:10px;"href="http://p5js.org/"><img style="width:4%; height:4%;" src="https://cdn.glitch.com/c9035c46-9465-43af-ace3-c36347f2aa78%2Fthumbnails%2Fp5js.png?1622951699037"></a>
+        <!--    <a style="padding-left:10px;"href="https://www.w3.org/"><img style="width:4%; height:4%;" src="https://cdn.glitch.com/c9035c46-9465-43af-ace3-c36347f2aa78%2Fthumbnails%2Fhtml.png?1622952010528"></a>
+            <a style="padding-left:10px;"href="https://jquery.com/"><img style="width:4%; height:4%;" src="https://cdn.glitch.com/c9035c46-9465-43af-ace3-c36347f2aa78%2Fthumbnails%2Fj.png?1622952146181"></a>
+            -->
+            
+            <p>Game Logic</p>
+            <ul>
+              <li>Language - p5.js , javascript 
+                </li>
+              <li>Setting array after generating random values and making maze</li>
+              <li>Level up - Inside 60 sec match two colored squares  </li>
+            </ul>
+          <br/>
+          <p>Website & Publishing Design</p>
+          <ul>
+            
+            <li> Language - p5.js , html, jquery libraries</li>
+            <li> Static Design (image) - Generate many squares like maze style </li>
+            <li> Dynamic Design (web) - With library scripts, User seems like that is in maze when enter this website. </li>
+            <li> Font - Roboto </li>
+        </ul>
+							
+						
+       <button style="background: #000000; width:200px; height:50px;">
+         
+               <a href="https://cdn.glitch.com/c9035c46-9465-43af-ace3-c36347f2aa78%2Fposter.pdf?v=1622987270044" target="_blank" style="text-decaration:underline !important; color:#fff; ">Download Poster</a>
+            </button>
+           
+              
+						</div>
+					</a>
+          </div>
+					
+       <!--  <div id="q_maze_main">
+           
+                <img src="https://cdn.glitch.com/c9035c46-9465-43af-ace3-c36347f2aa78%2F%EC%BA%A1%EC%B2%98.JPG?v=1623033917607" style="width:50%; height: 50%" >
+      
+        </div>
+-->
+				</div><!-- /page -->
+				<div class="page">
+					<blockquote class="quote" id="q_dev">
+						<p style="color: #000;">Developed game logic with p5.js & javascript </p>
+						<footer style="color: #000;">Ian Choe</footer>
+						<p style="color: #000;"> Developed website design & front coding </p>
+						<footer style="color: #000;">Jiwoo Kim</footer>
+					</blockquote>
+          
+          <blockquote class="quote" id="q_contact"> 
+						<span style="color: #000;">Email [Ian Cheo] <br/>portfolioian@gmail.com </span><br/>
+						<span style="color: #000;">Email [Jiwoo Kim]<br/> portfoliojiwoo@gmail.com </span>
+						
+					</blockquote>
+          
+          <blockquote class="quote" id="q_maze">
+					  <div class="pater__text">
+							<h2 class="pater__title"> <a href="maze.html" id="" style="text-decoration:underline; color: #444;" >Mouse Maze Enter</a></h2>
+							
+						</div>
+						
+					</blockquote>
+				</div>
+			</div><!-- /pages -->
+			<nav class="pagenav">
+				<button class="pagenav__button pagenav__button--top" aria-label="Navigate top" id="intro_move"><svg class="icon icon--rtop"><use xlink:href="#icon-arrow"></use></svg></button>
+				
+        <button class="pagenav__button pagenav__button--left" aria-label="Navigate left" id="maze_move"><svg class="icon"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--right" aria-label="Navigate right" id="contact_move"><svg class="icon icon--rright"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--bottom" aria-label="Navigate bottom" id="dev_move"><svg class="icon icon--rbottom"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornertopleft" aria-label="Navigate top left" id="intro_move2"><svg class="icon icon--rtopleft"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornertopright" aria-label="Navigate top right" id="dev_move2"><svg class="icon icon--rtopright"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornerbottomleft" aria-label="Navigate bottom left" id="maze_move2"><svg class="icon icon--rbottomleft"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornerbottomright" aria-label="Navigate bottom right" id="contact_move2"><svg class="icon icon--rbottomright"><use xlink:href="#icon-arrow"></use></svg></button>
+			</nav>
+		</main>
+		<script src="/classie.js"></script>
+		<script src="/main.js"></script>
+		<script>
+		(function() {
+			var pages = [].slice.call(document.querySelectorAll('.pages > .page')),
+				currentPage = 0,
+				
+				revealerOpts = {
+					// the layers are the elements that move from the sides
+					nmbLayers : 3,
+					// bg color of each layer
+					bgcolor : ['#ffff00', '#fff', '#3E3A35'],
+					// effect classname
+					effect : 'anim--effect-3',
+					onStart : function(direction) {
+						// next page gets class page--animate-[direction]
+						var nextPage = pages[currentPage === 0 ? 1 : 0];
+						classie.add(nextPage, 'page--animate-' + direction);
+					},
+					onEnd : function(direction) {
+						// remove class page--animate-[direction] from next page
+						var nextPage = pages[currentPage === 0 ? 1 : 0];
+						nextPage.className = 'page';
+					}
+				};
+				revealer = new Revealer(revealerOpts);
+
+			// clicking the page nav buttons
+			document.querySelector('button.pagenav__button--top').addEventListener('click', function() { reveal('top'); });
+			document.querySelector('button.pagenav__button--left').addEventListener('click', function() { reveal('left'); });
+			document.querySelector('button.pagenav__button--right').addEventListener('click', function() { reveal('right'); });
+			document.querySelector('button.pagenav__button--bottom').addEventListener('click', function() { reveal('bottom'); });
+			document.querySelector('button.pagenav__button--cornertopleft').addEventListener('click', function() { reveal('cornertopleft'); });
+			document.querySelector('button.pagenav__button--cornertopright').addEventListener('click', function() { reveal('cornertopright'); });
+			document.querySelector('button.pagenav__button--cornerbottomleft').addEventListener('click', function() { reveal('cornerbottomleft'); });
+			document.querySelector('button.pagenav__button--cornerbottomright').addEventListener('click', function() { reveal('cornerbottomright'); });
+
+			// triggers the effect by calling instance.reveal(direction, callbackTime, callbackFn)
+			function reveal(direction) {
+				var callbackTime = 750,
+					callbackFn = function() {
+						classie.remove(pages[currentPage], 'page--current');
+						currentPage = currentPage === 0 ? 1 : 0;
+						classie.add(pages[currentPage], 'page--current');	
+					};
+
+				revealer.reveal(direction, callbackTime, callbackFn);
+			}
+
+			// changing the effect..
+			var effectCtrl = document.getElementById('select-effect');
+			effectCtrl.addEventListener('change', changeEffect);
+			// force it to be the first opt as default
+			effectCtrl.value = 'effect-3';
+
+			function changeEffect() {
+				revealer.destroy();
+				var revealerOpts = {
+					// the layers are the elements that move from the sides
+					nmbLayers : Number(this.options[this.selectedIndex].getAttribute('data-layers')),
+					// bg color of each layer
+					bgcolor : this.options[this.selectedIndex].getAttribute('data-colors').split(','),
+					// effect classname
+					effect : 'anim--' + this.value,
+					onStart : function(direction) {
+						// next page gets class page--animate-[direction]
+						var nextPage = pages[currentPage === 0 ? 1 : 0];
+						classie.add(nextPage, 'page--animate-' + direction);
+					},
+					onEnd : function(direction) {
+						// remove class page--animate-[direction] from next page
+						var nextPage = pages[currentPage === 0 ? 1 : 0];
+						nextPage.className = 'page';
+					}
+				};
+				
+				revealer = new Revealer(revealerOpts);
+			}
+		})();
+		</script>
+	</body>
+</html>
