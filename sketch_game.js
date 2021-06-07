@@ -27,7 +27,7 @@ let endMenuX = 0;
 
 let timerS = 59;
 let timerMs = 100;
-
+let button;
 //0: dead, 1: live, 2: win, 3: start
 let gamemap = [
 [0, 0, 0, 0, 0, 0, 0], 
@@ -108,15 +108,18 @@ function newmap() {
                 //}
               
               //  if( typeof(gamemap[mapCurX + 1][mapCurY]) !='undefined'){
-                    
-               if(gamemap[mapCurX + 1][mapCurY] === 0) {
-                  tried = [0, 1, 2, 3];
-                  gamemap[mapCurX + 1][mapCurY] = 1;
-                  mapCurX++;
-               } else {
-                  tried.splice(tried[genDir], 1);
-                  continue;
-               }
+              
+               if( gamemap[mapCurX + 1][mapCurY] ){
+
+                   if(gamemap[mapCurX + 1][mapCurY] === 0) {
+                      tried = [0, 1, 2, 3];
+                      gamemap[mapCurX + 1][mapCurY] = 1;
+                      mapCurX++;
+                   } else {
+                      tried.splice(tried[genDir], 1);
+                      continue;
+                   }
+                 }
             //}
          } else {
             tried.splice(tried[genDir], 1);
@@ -159,9 +162,13 @@ function timerSubtract() {
 function setup() {
    createCanvas(windowWidth, windowHeight - 3.6);
    newmap();
+  
+
 }
 
+
 function draw() {
+  
 
    //setup
    if (pregame   === 1) {
@@ -240,8 +247,9 @@ function draw() {
 
       background(deadColor);
 
-
-      //scoreboard
+ 
+     
+     //scoreboard
       fill('#FFFFFF');
       noStroke();
       rect(0, 0, windowWidth, 75);
@@ -441,6 +449,7 @@ function mouseClicked() {
    //pregame play
 
    if (howtoplay === 0) {
+   
       if (mouseX > windowWidth/2 - 500/2 && mouseX < windowWidth/2 + 500/2) {
          if (mouseY > windowHeight/2 + 50 && mouseY < windowHeight/2 + 150) {
             pregame = 0;
@@ -450,18 +459,25 @@ function mouseClicked() {
 
 
    if (mouseX > windowWidth/2 - 350/2 && mouseX < windowWidth/2 + 350/2) {
+
       if (mouseY > windowHeight/2 && mouseY < windowHeight/2 + 150) {
          paused = 0;
       }
    }
 
    if (mouseX > windowWidth/2 + 500/2 - 25 && mouseX < windowWidth/2 + 500/2 + 25) {
+     
       if (mouseY > windowHeight/2 - 500/2 - 25 && mouseY < windowHeight/2 - 500/2 + 25) {
          howtoplay = 0;
       }
    }
 
    if (mouseX > windowWidth/2 - 500/2 && mouseX < windowWidth/2 + 500/2) {
+   
+     button = createButton('Next Map');
+      button.position(10, 100);
+      button.mousePressed(newmap);
+  
       if (mouseY > windowHeight/2 + 200 && mouseY < windowHeight/2 + 200 + 100) {
          howtoplay = 1;
       }
